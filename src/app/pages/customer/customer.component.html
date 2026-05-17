@@ -11,24 +11,24 @@
    
   <thead class="border-b border-gray-100 dark:border-white/[0.05]">
     <tr>
-      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">User</th>
-      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Project Name</th>
-      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Team</th>
-      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Status</th>
-      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Budget</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Nom du Client</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Telephone</th>
+      <!-- <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Team</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Status</th> -->
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Solde</th>
     </tr>
   </thead>
   <!-- Table Body -->
   <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
-    @for (order of tableData; track $index) {
+    @for (customer of customers(); track $index) {
     <tr>
-      <td class="px-5 py-4 sm:px-6 text-start">
+      <!-- <td class="px-5 py-4 sm:px-6 text-start">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 overflow-hidden rounded-full">
             <img
               width="40"
               height="40"
-              [src]="order.user.image"
+              [src]=".user.image"
               [alt]="order.user.name"
             />
           </div>
@@ -41,11 +41,14 @@
             </span>
           </div>
         </div>
+      </td> -->
+      <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+        {{ customer.name }}
       </td>
       <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-        {{ order.projectName }}
+        {{ customer.phone }}
       </td>
-      <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+      <!-- <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
         <div class="flex -space-x-2">
           @for (teamImage of order.team.images; track $index; let i = $index) {
           <div class="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900">
@@ -59,17 +62,17 @@
           </div>
           }
         </div>
-      </td>
-      <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+      </td> -->
+      <!-- <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
         <app-badge
           size="sm"
           [color]="getBadgeColor(order.status)"
         >
           {{ order.status }}
         </app-badge>
-      </td>
+      </td> -->
       <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-        {{ order.budget }}
+        {{ customer.solde }}
       </td>
     </tr>
     }

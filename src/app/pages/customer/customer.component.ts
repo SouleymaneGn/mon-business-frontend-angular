@@ -1,15 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BadgeComponent } from '../../shared/components/ui/badge/badge.component';
 import { ButtonComponent } from "../../shared/components/ui/button/button.component";
 import { ModalService } from '../../shared/services/modal.service';
+import { CustomerService } from './customer.service';
 @Component({
   selector: 'app-customer',
   imports: [BadgeComponent, ButtonComponent],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',
 })
-export class CustomerComponent {
-    constructor(public modal: ModalService) {}
+export class CustomerComponent implements OnInit {
+    constructor(public modal: ModalService, private customerService  : CustomerService) {}
+    customers = signal<any>([{}])
+    ngOnInit(): void {
+      this.getAllCustomer()
+    }
+
+    getAllCustomer(){
+      this.customerService.getAllCustomers().subscribe(customers=>{
+        this.customers.set(customers)
+        console.log(customers)
+      })
+    }
   
 tableData = [
     {
