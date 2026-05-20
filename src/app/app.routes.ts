@@ -19,6 +19,7 @@ import { SignInComponent } from './pages/auth-pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/auth-pages/sign-up/sign-up.component';
 import { CalenderComponent } from './pages/calender/calender.component';
 import { CustomerComponent } from './pages/customer/customer.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,11 @@ export const routes: Routes = [
         path:'customers',
         component:CustomerComponent
       },
+      {
+        path:'products',
+        component:ProductsComponent
+      },
+      
       {
         path:'calendar',
         component:CalenderComponent,
