@@ -11,5 +11,8 @@ export class CustomerService {
   getAllCustomers(){
     return this.http.get(this.baseUrl+"/customers")
   }
+  saveCustomer(customer:{name:string, phone:string}){
+   return this.http.post(this.baseUrl+"/customers",customer)
+  }
   
 }
