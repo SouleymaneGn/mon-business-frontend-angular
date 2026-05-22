@@ -20,6 +20,7 @@ import { SignUpComponent } from './pages/auth-pages/sign-up/sign-up.component';
 import { CalenderComponent } from './pages/calender/calender.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,10 @@ export const routes: Routes = [
       {
         path:'products',
         component:ProductsComponent
+      },
+       {
+        path:'transactions',
+        component:TransactionComponent
       },
       
       {
