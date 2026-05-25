@@ -1,15 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
-export interface Transaction {
-  id: string
-  string: string
-  clientId: string
-  amount: number,
-  note: string,
-  createdAt: Date
-  "updatedAt": Date
-}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +10,16 @@ export class TransationService {
   baseUrl = "http://localhost:3000/"
   
   getAllTransaction(){
-    return this.http.get<Transaction>(this.baseUrl+"transaction")
+    return this.http.get(this.baseUrl+"transaction")
+  }
+
+  addTransaction(transaction:{
+    type: string
+    clientId: string
+    amount: number,
+    note: string,
+  }){
+  return this.http.post(this.baseUrl+'transaction',transaction)
   }
 
  

@@ -99,7 +99,7 @@
     <div class="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
       <div class="px-2 pr-14">
         <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-          Edit Address
+          Cree une transactions
         </h4>
         <p class="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
           Update your details to keep your profile up-to-date.
@@ -111,33 +111,75 @@
 
     <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
 
-      <div>
-        <app-label>Nom du Produit </app-label>
+     <div>
+            <div class="flex flex-wrap items-center gap-8">
 
-        <app-input-field
-          type="text"
-          [value]="form.controls.name.value"
-          (valueChange)="form.controls.name.setValue($event.toString())"
-          [error]="form.controls.name.invalid && form.controls.name.touched"
-          placeholder="Entrer le nom"
-        />
+     <div class="flex flex-wrap items-center gap-8">
+
+<div class="flex flex-wrap items-center gap-8">
+
+  <app-radio
+    [id]="'option1'"
+    [name]="'group1'"
+    [value]="'DEPOT'"
+    [checked]="selectedValueRadio === 'DEPOT'"
+    [label]="'Depot'"
+    [disabled]="false"
+    (valueChange)="handleRadioChange($event)"
+  />
+
+  <app-radio
+    [id]="'option2'"
+    [name]="'group1'"
+    [value]="'RETRAIT'"
+    [checked]="selectedValueRadio === 'RETRAIT'"
+    [label]="'Retrait'"
+    [disabled]="false"
+    (valueChange)="handleRadioChange($event)"
+  />
+
+</div>
+
+</div>
+      </div>
+        </div>
+
+      <div>
+               <div>
+      <app-label> client</app-label>
+      <app-select
+        [options]="customerOptions()"
+        placeholder="selectioner un client"
+        [value]="selectedValue()"
+        (valueChange)="handleSelectChange($event)"
+        className="dark:bg-dark-900"
+      ></app-select>
+    </div>
       </div>
 
-      <app-input-field
-  type="number"
-  [value]="form.controls.price.value"
-  (valueChange)="form.controls.price.setValue(+$event)"
-  [error]="form.controls.price.invalid && form.controls.price.touched"
-  placeholder="Entrer le prix d'achat"
-/>
+<div>
+            <app-label>Monttant du transaction </app-label>
 
 <app-input-field
   type="number"
-  [value]="form.controls.stock.value"
-  (valueChange)="form.controls.stock.setValue(+$event)"
-  [error]="form.controls.stock.invalid && form.controls.stock.touched"
-  placeholder="Entrer la quantité"
+  [value]="form.controls.amount.value"
+  (valueChange)="form.controls.amount.setValue(+$event)"
+  [error]="form.controls.amount.invalid && form.controls.amount.touched"
+  placeholder="Entrer le monttant du transaction"
 />
+</div>
+<div>
+            <app-label>note </app-label>
+
+<app-input-field
+  type="string"
+  [value]="form.controls.note.value"
+  (valueChange)="form.controls.note.setValue($event.toString())"
+  [error]="form.controls.note.invalid && form.controls.note.touched"
+  placeholder="motif de la transaction"
+/>
+</div>
+
 
     </div>
 
@@ -156,8 +198,7 @@
     <app-button
       size="sm"
       type="submit"
-        [disabled]="form.invalid"
-
+      [disabled]="form.invalid"
       (btnClick)="handleSave()"
     >
       Enregistrer
