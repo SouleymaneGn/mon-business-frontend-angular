@@ -49,6 +49,7 @@ export class CreateInvoiceComponent implements OnInit {
   products = signal<any[]>([]);
 
   selectedCustomerId = signal('');
+  
   selectedProductId = signal('');
   quantity = signal(1);
 

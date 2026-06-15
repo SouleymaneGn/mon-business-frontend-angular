@@ -6,7 +6,6 @@ import { BasicTablesComponent } from './pages/tables/basic-tables/basic-tables.c
 import { BlankComponent } from './pages/blank/blank.component';
 import { NotFoundComponent } from './pages/other-page/not-found/not-found.component';
 import { AppLayoutComponent } from './shared/layout/app-layout/app-layout.component';
-import { InvoicesComponent } from './pages/invoices/invoices.component';
 import { LineChartComponent } from './pages/charts/line-chart/line-chart.component';
 import { BarChartComponent } from './pages/charts/bar-chart/bar-chart.component';
 import { AlertsComponent } from './pages/ui-elements/alerts/alerts.component';
@@ -23,6 +22,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { CreateInvoiceTableComponent } from './shared/components/ecommerce/create-invoice/create-invoice-table/create-invoice-table.component';
 import { CreateInvoiceComponent } from './pages/create-invoice/create-invoice.component';
+import { InvoicesComponent } from './invoices/invoices.component';
 
 export const routes: Routes = [
   {
@@ -83,11 +83,11 @@ export const routes: Routes = [
         title:'Angular Blank Dashboard | TailAdmin - Angular Admin Dashboard Template'
       },
       // support tickets
-      {
-        path:'invoice',
-        component:InvoicesComponent,
-        title:'Angular Invoice Details Dashboard | TailAdmin - Angular Admin Dashboard Template'
-      },
+      // {
+      //   path:'invoice',
+      //   component:InvoicesComponent,
+      //   title:'Angular Invoice Details Dashboard | TailAdmin - Angular Admin Dashboard Template'
+      // },
       {
         path:'line-chart',
         component:LineChartComponent,

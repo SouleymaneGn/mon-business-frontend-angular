@@ -12,6 +12,9 @@ export class InvoiceService {
   return this.http.post(this.baseUrl+"/invoices",invoice)
 }
 
+invoicePayment(payload:any){
+  return this.http.post<any>(this.baseUrl+"/payments",payload)
+}
 getAllInvoices(){
   return this.http.get(this.baseUrl+"/invoices").pipe(
   )
