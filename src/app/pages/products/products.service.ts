@@ -8,8 +8,8 @@ export class ProductsService {
   http = inject(HttpClient)
   baseUrl = "http://localhost:3000"
 
-  getAllCustomers(){
-    return this.http.get(this.baseUrl+"/produts")
+  getAllProducts(){
+    return this.http.get<any[]>(this.baseUrl+"/produts")
   }
   saveCustomer(product:{name:string, price:number, stock :number}){
    return this.http.post(this.baseUrl+"/produts",product)

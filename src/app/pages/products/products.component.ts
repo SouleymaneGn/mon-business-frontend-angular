@@ -30,7 +30,7 @@ constructor(public modal: ModalService, private productService  : ProductsServic
     }
 
     getAllProducts(){
-      this.productService.getAllCustomers().subscribe(products=>{
+      this.productService.getAllProducts().subscribe(products=>{
         this.products.set(products)
         console.log(products)
       })

@@ -21,6 +21,8 @@ import { CalenderComponent } from './pages/calender/calender.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
+import { CreateInvoiceTableComponent } from './shared/components/ecommerce/create-invoice/create-invoice-table/create-invoice-table.component';
+import { CreateInvoiceComponent } from './pages/create-invoice/create-invoice.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +39,14 @@ export const routes: Routes = [
       {
         path:'customers',
         component:CustomerComponent
+      },
+      {
+        path:'invoice',
+        component:CreateInvoiceComponent
+      }, 
+      {
+        path:'invoices',
+        component:InvoicesComponent
       },
       {
         path:'products',
