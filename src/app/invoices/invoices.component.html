@@ -60,17 +60,17 @@
 
           <!-- Total -->
           <td class="px-4 py-3 text-theme-sm font-semibold text-gray-900 dark:text-white">
-            {{ invoice.total  }}
+            {{ invoice.total | number }} GNF
           </td>
 
           <!-- Paid -->
           <td class="px-4 py-3 text-theme-sm text-green-600 font-medium">
-            {{ invoice.paidAmount  }}
+            {{ invoice.paidAmount| number }} GNF
           </td>
 
           <!-- Remaining -->
           <td class="px-4 py-3 text-theme-sm text-red-600 font-medium">
-            {{ invoice.remainingAmount  }}
+            {{ invoice.remainingAmount | number }} GNF
           </td>
 
           <!-- Status -->
@@ -86,7 +86,7 @@
 
           <!-- Date -->
           <td class="px-4 py-3 text-theme-sm text-gray-500">
-            {{ invoice.createdAt  }}
+            {{ invoice.createdAt |date}}
           </td>
           <td>
             <app-button (btnClick)="openModal(invoice.customer?.id, invoice.id)">payer</app-button>

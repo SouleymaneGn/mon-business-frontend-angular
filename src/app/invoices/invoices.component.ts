@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ButtonComponent } from '../shared/components/ui/button/button.component';
 import { Router, RouterLink } from '@angular/router';
@@ -12,7 +12,7 @@ import { CustomerService } from '../pages/customer/customer.service';
 
 @Component({
   selector: 'app-invoices',
-  imports: [ButtonComponent, RouterLink, InputFieldComponent, LabelComponent, ModalComponent, SelectComponent, ],
+  imports: [ButtonComponent,CommonModule, RouterLink, InputFieldComponent, LabelComponent, ModalComponent, SelectComponent, ],
   templateUrl: './invoices.component.html',
   styleUrl: './invoices.component.css',
 })
@@ -92,11 +92,14 @@ handleSave() {
     method: this.selectedMethod(),
     note: this.form.controls.note.value
   }; 
-  this.invoiceService.invoicePayment(payload).subscribe(payment=>{
-    console.log(payment)
+  this.invoiceService.invoicePayment(payload).subscribe({
+   next:response=>{
+     console.log(response)
       this.getAllInvoice();
       // fermer modal
       this.closeModal();
+   },
+   error: error => console.log(error)
   })
 
 

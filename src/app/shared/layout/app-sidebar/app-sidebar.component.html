@@ -15,7 +15,7 @@
   (mouseenter)="onSidebarMouseEnter()"
   (mouseleave)="sidebarService.setHovered(false)"
 >
-  <div
+  <!-- <div
     class="py-8 flex"
     [ngClass]="{
       'xl:justify-center': !((isExpanded$ | async) || (isHovered$ | async)),
@@ -42,7 +42,7 @@
       <img src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
       }
     </a>
-  </div>
+  </div> -->
 
   <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
     <nav class="mb-6">
@@ -58,7 +58,7 @@
               'justify-start': (isExpanded$ | async) || (isHovered$ | async)
             }"
           >
-            @if ((isExpanded$ | async) || (isHovered$ | async) || (isMobileOpen$ | async)) 
+            <!-- @if ((isExpanded$ | async) || (isHovered$ | async) || (isMobileOpen$ | async)) 
             { Menu } 
            @else {
             <svg
@@ -76,7 +76,7 @@
                 fill="currentColor"
               ></path>
             </svg>
-            }
+            } -->
           </h2>
           <ul class="flex flex-col gap-1">
             @for (nav of navItems; track $index;let i = $index) {

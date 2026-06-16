@@ -39,6 +39,7 @@ export class CreateInvoiceComponent implements OnInit {
     customerId: '',
     items: [] as {
       productId: string;
+      price:number
       quantity: number;
     }[]
   });
@@ -101,6 +102,7 @@ export class CreateInvoiceComponent implements OnInit {
         ...invoice.items,
         {
           productId: this.selectedProductId(),
+          price:this.price(),
           quantity: this.quantity()
         }
       ]
@@ -108,6 +110,8 @@ export class CreateInvoiceComponent implements OnInit {
 
     this.selectedProductId.set('');
     this.quantity.set(1);
+    this.price.set(1);
+
   }
 
   removeItem(index: number) {
@@ -132,6 +136,7 @@ export class CreateInvoiceComponent implements OnInit {
    } 
 
   createInvoice() {
+    console.log(this.invoice())
 
     this.invoiceService
       .createInvoice(this.invoice())
@@ -152,4 +157,5 @@ export class CreateInvoiceComponent implements OnInit {
         error: err => console.error(err)
       });
   }
+ 
 }

@@ -81,9 +81,8 @@
             {{ products().find(p => p.id === item.productId)?.name }}
           </td>
            <td>
-            {{ products().find(p => p.id === item.productId)?.price }}
+            {{ item.price}}
           </td>
-
           <td>
             {{ item.quantity }}
           </td>

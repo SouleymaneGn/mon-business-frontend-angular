@@ -53,6 +53,7 @@ constructor(public modal: ModalService, private productService  : ProductsServic
 
   form = new FormGroup({
   name: new FormControl('', {validators: [Validators.required],nonNullable:true}),
+  purchasePrice: new FormControl(0, {validators: [Validators.required],nonNullable:true}),
   price : new FormControl(0, {validators: [Validators.required], nonNullable: true}),
   stock : new FormControl(0, {validators: [Validators.required], nonNullable: true}),
 
@@ -79,6 +80,7 @@ handleSave() {
       // reset formulaire
       this.form.reset({
         name: '',
+        purchasePrice:0,
         price: 0,
         stock:0
       });

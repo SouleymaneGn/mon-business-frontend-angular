@@ -106,7 +106,6 @@
     <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
 
       <div>
-        <app-label>Nom du Produit </app-label>
 
         <app-input-field
           type="text"
@@ -116,24 +115,37 @@
           placeholder="Entrer le nom"
         />
       </div>
+            <div>
 
-      <app-input-field
-  type="number"
-  [value]="form.controls.price.value"
-  (valueChange)="form.controls.price.setValue(+$event)"
-  [error]="form.controls.price.invalid && form.controls.price.touched"
-  placeholder="Entrer le prix d'achat"
-/>
+        <app-input-field
+          type="number"
+          [value]="form.controls.purchasePrice.value"
+          (valueChange)="form.controls.purchasePrice.setValue(+$event)"
+          [error]="form.controls.purchasePrice.invalid && form.controls.purchasePrice.touched"
+          placeholder="Entrer le Prix d'achat"
+        />
+      </div>
+            <div>
 
-<app-input-field
-  type="number"
-  [value]="form.controls.stock.value"
-  (valueChange)="form.controls.stock.setValue(+$event)"
-  [error]="form.controls.stock.invalid && form.controls.stock.touched"
-  placeholder="Entrer la quantité"
-/>
+        <app-input-field
+          type="text"
+          [value]="form.controls.price.value"
+          (valueChange)="form.controls.price.setValue(+$event)"
+          [error]="form.controls.price.invalid && form.controls.price.touched"
+          placeholder="Entrer le prix Unitaire"
+        />
+      </div>
+            <div>
 
-    </div>
+        <app-input-field
+          type="text"
+          [value]="form.controls.stock.value"
+          (valueChange)="form.controls.stock.setValue(+$event)"
+          [error]="form.controls.stock.invalid && form.controls.stock.touched"
+          placeholder="Entrer le nombre du stock"
+        />
+      </div>
+  </div>
 
   </div>
 
