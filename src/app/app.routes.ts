@@ -23,6 +23,7 @@ import { TransactionComponent } from './pages/transaction/transaction.component'
 import { CreateInvoiceTableComponent } from './shared/components/ecommerce/create-invoice/create-invoice-table/create-invoice-table.component';
 import { CreateInvoiceComponent } from './pages/create-invoice/create-invoice.component';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +56,10 @@ export const routes: Routes = [
        {
         path:'transactions',
         component:TransactionComponent
+      },
+      {
+        path:'suppliers',
+        component:SuppliersComponent
       },
       
       {

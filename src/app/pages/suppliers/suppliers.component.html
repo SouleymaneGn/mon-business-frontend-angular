@@ -1,0 +1,164 @@
+ <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+<div class="max-w-full overflow-x-auto custom-scrollbar">
+    <div class="flex align-items-center justify-between m-2">
+    <div>rechercher</div>
+    <div>
+    <app-button size="sm" variant="primary"  (click)="openModal()"
+> Ajouter un client  </app-button>
+    </div>
+   </div>
+  <table class="min-w-full">
+  <!-- Table Header -->
+   
+  <thead class="border-b border-gray-100 dark:border-white/[0.05]">
+    <tr>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"> Fournisseurs</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Telephone</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Total Achat</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Total Payé</th>
+      <th class="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">Solde</th>
+    </tr>
+  </thead>
+ <!-- Table Body -->
+  <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
+    @for (supplier of suppliers(); track $index) {
+    <tr>
+      <!-- <td class="px-5 py-4 sm:px-6 text-start">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 overflow-hidden rounded-full">
+            <img
+              width="40"
+              height="40"
+              [src]=".user.image"
+              [alt]="order.user.name"
+            />
+          </div>
+          <div>
+            <span class="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+              {{ order.user.name }}
+            </span>
+            <span class="block text-gray-500 text-theme-xs dark:text-gray-400">
+              {{ order.user.role }}
+            </span>
+          </div>
+        </div>
+      </td> -->
+      <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+        {{ supplier.name }}
+      </td>
+      <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+        {{ supplier.phone }}
+      </td>
+      <!-- <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+        <div class="flex -space-x-2">
+          @for (teamImage of order.team.images; track $index; let i = $index) {
+          <div class="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900">
+            <img
+              width="24"
+              height="24"
+              [src]="teamImage"
+              [alt]="'Team member ' + (i + 1)"
+              class="w-full size-6"
+            />
+          </div>
+          }
+        </div>
+      </td> -->
+      <!-- <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+        <app-badge
+          size="sm"
+          [color]="getBadgeColor(order.status)"
+        >
+          {{ order.status }}
+        </app-badge>
+      </td> -->
+      <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+        {{ supplier.purchaseCount}} FG
+      </td>
+      <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+        {{ supplier.totalPaid}} FG
+      </td>
+      <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+        {{ supplier.totalPurchases}} FG
+      </td>      
+    </tr>
+    }
+  </tbody>
+</table>
+</div>
+</div>
+
+ <!-- Modal -->
+  <app-modal
+    [isOpen]="isOpen()"
+    (close)="closeModal()"
+    className="max-w-[700px] m-4"
+  >
+    <div class="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
+      <div class="px-2 pr-14">
+        <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
+          Edit Address
+        </h4>
+        <p class="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
+          Update your details to keep your profile up-to-date.
+        </p>
+      </div>
+<form class="flex flex-col">
+
+  <div class="px-2 overflow-y-auto custom-scrollbar">
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
+
+      <div>
+        <app-label>Nom complet du client</app-label>
+
+        <app-input-field
+          type="text"
+          [value]="form.controls.name.value"
+          (valueChange)="form.controls.name.setValue($event.toString())"
+          [error]="form.controls.name.invalid && form.controls.name.touched"
+          placeholder="Entrer le nom"
+        />
+      </div>
+
+      <div>
+        <app-label>Numero de telephone</app-label>
+
+        <app-input-field
+          type="text"
+          [value]="form.controls.phone.value"
+          (valueChange)="form.controls.phone.setValue($event.toString())"
+          [error]="form.controls.phone.invalid && form.controls.phone.touched"
+          placeholder="Entrer le numéro"
+        />
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="flex items-center gap-3 px-2 mt-6 lg:justify-end">
+
+    <app-button
+      size="sm"
+      variant="outline"
+      (btnClick)="closeModal()"
+    >
+      Fermer
+    </app-button>
+
+    <app-button
+      size="sm"
+      type="submit"
+        [disabled]="form.invalid"
+
+      (btnClick)="handleSave()"
+    >
+      Enregistrer
+    </app-button>
+
+  </div>
+
+</form>
+    </div>
+  </app-modal>
