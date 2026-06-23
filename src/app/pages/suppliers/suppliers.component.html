@@ -110,7 +110,7 @@
     <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
 
       <div>
-        <app-label>Nom complet du client</app-label>
+        <app-label>Nom complet du fournisseur</app-label>
 
         <app-input-field
           type="text"
@@ -130,6 +130,17 @@
           (valueChange)="form.controls.phone.setValue($event.toString())"
           [error]="form.controls.phone.invalid && form.controls.phone.touched"
           placeholder="Entrer le numéro"
+        />
+      </div>
+            <div>
+        <app-label>Address </app-label>
+
+        <app-input-field
+          type="text"
+          [value]="form.controls.address.value"
+          (valueChange)="form.controls.address.setValue($event.toString())"
+          [error]="form.controls.address.invalid && form.controls.address.touched"
+          placeholder="Entrer l'adress du fourniseurs"
         />
       </div>
 

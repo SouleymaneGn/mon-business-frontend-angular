@@ -45,7 +45,7 @@ constructor(public modal: ModalService, private supplierService  : SupplierServi
   form = new FormGroup({
   name: new FormControl('', {validators: [Validators.required],nonNullable:true}),
   phone : new FormControl('', {validators: [Validators.required], nonNullable: true}),
-  adress : new FormControl(''),
+  address : new FormControl('', {validators: [Validators.required], nonNullable: true}),
 
  
 })
