@@ -1,0 +1,34 @@
+<div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+  <div class="max-w-full overflow-x-auto custom-scrollbar">
+
+    <!-- Header actions -->
+    <div class="flex items-center justify-between m-2">
+      <div>Rechercher</div>
+
+      <div>
+        <app-button size="sm" variant="primary" (btnClick)="navigateToCreatePurchase()">
+          Nouvel achat
+        </app-button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <table class="min-w-full">
+
+      <thead class="border-b border-gray-100 dark:border-white/[0.05]">
+        <tr>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Date</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Fournisseur</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Articles</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Total</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Payé</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Reste</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Statut</th>
+        </tr>
+      </thead>
+
+     
+    </table>
+  </div>
+</div>
+

@@ -24,6 +24,8 @@ import { CreateInvoiceTableComponent } from './shared/components/ecommerce/creat
 import { CreateInvoiceComponent } from './pages/create-invoice/create-invoice.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
+import { PurchasesComponent } from './pages/purchases/purchases.component';
+import { CreatePurchaseComponent } from './pages/create-purchase/create-purchase.component';
 
 export const routes: Routes = [
   {
@@ -61,7 +63,14 @@ export const routes: Routes = [
         path:'suppliers',
         component:SuppliersComponent
       },
-      
+       {
+        path:'purchases',
+        component:PurchasesComponent
+      },
+      {
+        path:'purchase',
+        component:CreatePurchaseComponent
+      },
       {
         path:'calendar',
         component:CalenderComponent,
