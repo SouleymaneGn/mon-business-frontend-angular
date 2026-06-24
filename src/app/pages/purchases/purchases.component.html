@@ -1,34 +1,111 @@
 <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
   <div class="max-w-full overflow-x-auto custom-scrollbar">
 
-    <!-- Header actions -->
+    <!-- Header top -->
     <div class="flex items-center justify-between m-2">
-      <div>Rechercher</div>
-
-      <div>
-        <app-button size="sm" variant="primary" (btnClick)="navigateToCreatePurchase()">
-          Nouvel achat
-        </app-button>
+      <div class="text-lg font-semibold">
+        Liste des factures
       </div>
     </div>
+    <div class="flex align-items-center justify-between m-2">
+    <div>rechercher</div>
+    <div>
+    <app-button size="sm" variant="primary"  (btnClick)="navigateTo()"
+>   Créer un achat
+ </app-button >
+    </div>
+   </div>
 
-    <!-- Table -->
     <table class="min-w-full">
 
+      <!-- HEADER -->
       <thead class="border-b border-gray-100 dark:border-white/[0.05]">
         <tr>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Date</th>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Fournisseur</th>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Articles</th>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Total</th>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Payé</th>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Reste</th>
-          <th class="px-5 py-3 text-start text-theme-xs text-gray-500">Statut</th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Fournisseur 
+          </th>
+
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Articles
+          </th>
+
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Montant total
+          </th>
+
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Montant payé
+          </th>
+
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Reste à payer
+          </th>
+
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Statut
+          </th>
+          <th class="px-5 py-3 text-start text-theme-xs text-gray-500 dark:text-gray-400">
+            Date
+          </th>          
         </tr>
       </thead>
 
-     
+      <!-- BODY -->
+
+
+      <!-- BODY -->
+      <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
+
+        @for (purchase of purchases(); track $index) {
+
+        <tr>
+
+          <td class="px-4 py-3 text-theme-sm text-gray-700 dark:text-gray-300">
+            {{ purchase.supplierName }}
+          </td>
+
+          <td class="px-4 py-3 text-theme-sm font-semibold text-gray-900 dark:text-white">
+            {{purchase.itemCount}}
+          </td>
+           <!-- Total -->
+           <td class="px-4 py-3 text-theme-sm text-gray-700 dark:text-gray-300">
+            {{ purchase.totalAmount|number}} GNF
+          </td>
+
+          <!-- Paid -->
+          <td class="px-4 py-3 text-theme-sm text-green-600 font-medium">
+            {{purchase.paidAmount|number}} GNF
+          </td>
+        
+          <td class="px-4 py-3 text-theme-sm text-red-600 font-medium">
+            {{purchase.balance|number}} GNF
+          </td>
+
+          <!-- Status -->
+          <td class="px-4 py-3 text-theme-sm">
+            <span
+              class="px-2 py-1 rounded text-xs font-medium"
+             >
+
+              {{ purchase.status }}
+
+            </span>
+          </td>
+
+          <!-- Date -->
+          <td class="px-4 py-3 text-theme-sm text-gray-500">
+            {{ purchase.createdAt |date}}
+          </td>
+          <!-- <td>
+            <app-button (btnClick)="openModal(invoice.customer?.id, invoice.id)">payer</app-button>
+          </td> -->
+
+        </tr>
+
+        }
+
+      </tbody>
+    
     </table>
   </div>
 </div>
-

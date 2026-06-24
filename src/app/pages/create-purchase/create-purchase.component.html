@@ -1,1 +1,161 @@
-<p>create-purchase works!</p>
+<div class="rounded-xl border border-gray-200 bg-white p-5">
+
+  <h3 class="mb-5 text-lg font-semibold">
+    Nouvel Achat
+  </h3>
+
+  <!-- Fournisseur -->
+
+  <div class="mb-5">
+
+    <label class="mb-2 block">
+      Fournisseur
+    </label>
+
+    <app-select
+      [options]="supplierOptions()"
+      placeholder="Sélectionner un fournisseur"
+      [value]="selectedSupplierId()"
+      (valueChange)="handleSupplierChange($event)">
+    </app-select>
+
+  </div>
+
+  <!-- Produit -->
+
+  <div class="grid grid-cols-4 gap-3">
+
+    <app-select
+      [options]="productOptions()"
+      placeholder="Sélectionner un produit"
+      [value]="selectedProductId()"
+      (valueChange)="handleProductChange($event)">
+    </app-select>
+
+    <input
+      type="number"
+      min="0"
+      class="rounded-lg border p-3"
+      placeholder="Prix d'achat"
+      [value]="purchasePrice()"
+      (input)="purchasePrice.set(+$any($event.target).value)"
+    />
+
+    <input
+      type="number"
+      min="1"
+      class="rounded-lg border p-3"
+      placeholder="Quantité"
+      [value]="quantity()"
+      (input)="quantity.set(+$any($event.target).value)"
+    />
+
+    <button
+      type="button"
+      class="rounded-lg bg-blue-600 px-4 py-2 text-white"
+      (click)="addItem()">
+      Ajouter
+    </button>
+
+  </div>
+
+  <!-- Montant payé -->
+
+  <div class="mt-5">
+
+    <label class="mb-2 block">
+      Montant payé
+    </label>
+
+    <input
+      type="number"
+      min="0"
+      class="w-full rounded-lg border p-3"
+      [value]="purchase().paidAmount"
+      (input)="purchase.update(p => ({
+        ...p,
+        paidAmount: +$any($event.target).value
+      }))"
+    />
+
+  </div>
+
+  <!-- Tableau des articles -->
+
+  <table class="mt-5 w-full">
+
+    <thead>
+      <tr>
+        <th class="text-left">Produit</th>
+        <th class="text-left">Prix d'achat</th>
+        <th class="text-left">Quantité</th>
+        <th class="text-left">Total</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      @for(item of purchase().items; track $index){
+
+        <tr>
+
+          <td>
+            {{ products().find(p => p.id === item.productId)?.name }}
+          </td>
+
+          <td>
+            {{ item.purchasePrice }}
+          </td>
+
+          <td>
+            {{ item.quantity }}
+          </td>
+
+          <td>
+            {{ item.purchasePrice * item.quantity }}
+          </td>
+
+          <td>
+
+            <button
+              type="button"
+              class="text-red-500"
+              (click)="removeItem($index)">
+              Supprimer
+            </button>
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+  <!-- Total général -->
+
+  <div class="mt-4 text-right font-semibold">
+
+    Total Achat :
+    {{
+      purchase().items.reduce(
+        (sum, item) => sum + (item.purchasePrice * item.quantity),
+        0
+      )
+    }}
+
+  </div>
+
+  <button
+    type="button"
+    class="mt-5 rounded-lg bg-green-600 px-5 py-3 text-white"
+    (click)="createPurchase()">
+
+    Enregistrer l'achat
+
+  </button>
+
+</div>

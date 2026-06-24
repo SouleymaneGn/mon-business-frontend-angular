@@ -8,11 +8,11 @@ export class PurchaseService {
   http = inject(HttpClient)
   baseUrl = "http://localhost:3000"
   savePurchases(purchases: any) {
-  return this.http.post<any>(this.baseUrl+"/purchases",purchases)
+  return this.http.post<any>(this.baseUrl+"/purchase",purchases)
   }
   
   getAllPurchases(){
-     return this.http.get<any>(this.baseUrl+"/purchases")
+     return this.http.get<any>(this.baseUrl+"/purchase")
  
   }  
 }
