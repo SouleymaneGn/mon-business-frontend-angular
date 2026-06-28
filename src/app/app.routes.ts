@@ -26,6 +26,7 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { PurchasesComponent } from './pages/purchases/purchases.component';
 import { CreatePurchaseComponent } from './pages/create-purchase/create-purchase.component';
+import { AccountsComponent } from './accounts/accounts.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +71,10 @@ export const routes: Routes = [
       {
         path:'purchase',
         component:CreatePurchaseComponent
+      },
+            {
+        path:'accounts',
+        component:AccountsComponent
       },
       {
         path:'calendar',
