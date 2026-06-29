@@ -13,6 +13,7 @@ import { Customer, CustomerService } from '../customer/customer.service';
 import { ComponentCardComponent } from "../../shared/components/common/component-card/component-card.component";
 import { RadioComponent } from "../../shared/components/form/input/radio.component";
 import { Router } from '@angular/router';
+import { AccountService } from '../../accounts/account.service';
 
 
 
@@ -38,15 +39,24 @@ constructor(public modal: ModalService) {}
 ngOnInit(): void {
   this.getAllTransaction()
   this.optionCustomer()
+  this.optionAccount()
 }
 transactionService = inject(TransationService)
 customerService = inject(CustomerService)
+accountService = inject(AccountService)
 transactions = signal<any>([])
 customers = signal<Customer[]>([])
+accounts = signal<any>([])
 selectedValue = signal<string>('')
+selectedAccount = signal<string>("")
 customerOptions = signal<
   { value: string; label: string }[]
 >([]);
+
+accountOptions = signal<
+{
+  value:string; label: string
+}[]>([])
 
 
 getAllTransaction(){
@@ -73,21 +83,35 @@ optionCustomer() {
   });
 }
 
+optionAccount() {
+  this.accountService.getAll().subscribe((accounts: any[]) => {
+
+    this.accounts.set(accounts);
+
+    this.accountOptions.set(
+      accounts.map((account) => ({
+        value: account.id,
+        label: account.name,
+      }))
+    );
+
+    console.log("Liste des comptes :", accounts);
+    console.log("Options :", this.accountOptions());
+  });
+}
  getBadgeColor(status: string): 'success' | 'warning' | 'error' {
     if (status === 'Active') return 'success';
     if (status === 'Pending') return 'warning';
     return 'error';
   }
 
-    address = {
-    country: 'United States.',
-    cityState: 'Phoenix, Arizona, United States.',
-    postalCode: 'ERT 2489',
-    taxId: 'AS4568384',
-  };
 
   form = new FormGroup({
     clientId: new FormControl('', {
+    validators: [Validators.required],
+    nonNullable: true
+  }),
+   accountId: new FormControl('', {
     validators: [Validators.required],
     nonNullable: true
   }),
@@ -135,6 +159,7 @@ handleSave() {
       this.form.reset({
         type: '',
         clientId: '',
+        accountId:'',
         amount:0,
         note:""
       });
@@ -144,6 +169,13 @@ handleSave() {
     error: (err) => {
       console.error(err);
     }
+  });
+}
+handleAccountChange(value: string) {
+  this.selectedAccount.set(value);
+
+  this.form.patchValue({
+    accountId: value,
   });
 }
 }

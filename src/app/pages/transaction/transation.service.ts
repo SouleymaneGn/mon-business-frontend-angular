@@ -12,6 +12,8 @@ export class TransationService {
   getAllTransaction(){
     return this.http.get(this.baseUrl+"transaction")
   }
+  
+
 
   addTransaction(transaction:{
     type: string

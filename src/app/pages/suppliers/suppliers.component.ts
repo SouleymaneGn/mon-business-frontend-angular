@@ -6,11 +6,12 @@ import { ModalService } from '../../shared/services/modal.service';
 import { SupplierService } from './supplier.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalComponent } from '../../shared/components/ui/modal/modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-suppliers',
   imports: [ButtonComponent, InputFieldComponent, LabelComponent, ReactiveFormsModule,
-    ModalComponent],
+    ModalComponent, CommonModule],
   templateUrl: './suppliers.component.html',
   styleUrl: './suppliers.component.css',
 })

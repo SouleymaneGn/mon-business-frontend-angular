@@ -155,6 +155,20 @@
         className="dark:bg-dark-900"
       ></app-select>
     </div>
+    
+      </div>
+        <div>
+               <div>
+      <app-label> Compte</app-label>
+      <app-select
+        [options]="accountOptions()"
+        placeholder="selectioner un client"
+        [value]="selectedAccount()"
+        (valueChange)="handleAccountChange($event)"
+        className="dark:bg-dark-900"
+      ></app-select>
+    </div>
+    
       </div>
 
 <div>

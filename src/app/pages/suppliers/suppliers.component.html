@@ -73,13 +73,13 @@
         </app-badge>
       </td> -->
       <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-        {{ supplier.purchaseCount}} FG
+        {{ supplier.totalPurchases |number}} FG
       </td>
       <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-        {{ supplier.totalPaid}} FG
+        {{ supplier.totalPaid | number}} FG
       </td>
       <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-        {{ supplier.totalPurchases}} FG
+        {{ supplier.balance | number}} FG
       </td>      
     </tr>
     }

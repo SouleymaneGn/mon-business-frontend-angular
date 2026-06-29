@@ -20,7 +20,9 @@ import { AccountService } from './account.service';
   styleUrl: './accounts.component.css',
 })
 export class AccountsComponent {
- constructor(public modal: ModalService, private accountService  : AccountService ) {}
+ constructor(public modal: ModalService,
+   private accountService  : AccountService,
+    ) {}
 
   isOpen = signal<boolean>(false);
   openModal() { this.isOpen.set(true); }
